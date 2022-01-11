@@ -1,5 +1,7 @@
 package egovframework.com.cmm;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -17,6 +19,7 @@ import java.io.Serializable;
  *  @see
  *  
  */
+@Data
 public class LoginVO implements Serializable{
 	
 	/**
