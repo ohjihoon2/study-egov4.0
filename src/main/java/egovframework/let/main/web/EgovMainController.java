@@ -116,8 +116,8 @@ public class EgovMainController {
 
 	@RequestMapping(value = {"/", "/index"})
 	public String index(Model model, HttpSession session) throws Exception {
-//		LoginVO loginVO = (LoginVO)session.getAttribute("LoginVO");
-//		model.addAttribute("loginVO", loginVO);
+		LoginVO loginVO = (LoginVO)session.getAttribute("LoginVO");
+		model.addAttribute("loginVO", loginVO);
 		return "index";
 
 	}
