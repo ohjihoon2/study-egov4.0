@@ -6,23 +6,36 @@
 <th:block th:fragment="pageCss">
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <style>
-        input {background: #eee; border: 1px solid black; width: 150px; height: 30px; }
+        input[type="text"], input[type="password"] {background: #eee; border: 1px solid black; width: calc(100% - 6px); height: 30px; margin-bottom: 5px; }
+        select {width: 100%; height: 30px; margin-bottom: 5px; }
     </style>
 </th:block>
 
 <body>
-    <div>
-        <h3>로그인</h3>
+    <div style="width: 300px; margin: 0 auto; margin-top: 40px;">
+        <h2 style="text-align: center; font-size: 1.6em; margin-bottom: 20px;">로그인</h2>
         <form name="loginForm" method="post" action="/login">
-            <input id="id" name="id" type="text" value="" /><br />
-            <input id="password" name="password"  type="password" value="" /><br />
-            <input type="hidden" name="userSe"  value="USR"/>
-            <button type="submit">확인</button>
+            <h3 style="margin-bottom: 5px;">사용자</h3>
+            <select name="userSe">
+                <option value='GNR'>개인</option>
+                <option value='ENT'>기업</option>
+                <option value='USR' selected>업무</option>
+            </select>
+            <br />
+            <br />
+            <input id="id" name="id" type="text" value="" />
+            <br />
+            <input id="password" name="password"  type="password" value="" />
+            <br />
+            <br />
+            <button type="submit" style="width: 100%; background: #0958A5; border: 1px solid black;">확인</button>
         </form>
+        <br />
+        <th:block th:if="${message != ''}">
+            <p th:text="${message}" style="text-align: center"></p>
+        </th:block>
     </div>
-    <div th:if="${message != ''}">
-        <p th:text="${message}"></p>
-    </div>
+
 
 
 
