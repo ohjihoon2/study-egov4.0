@@ -557,4 +557,46 @@ public class EgovBBSAttributeManageController {
 
 		return "cop/bbs/EgovBdListPortlet";
     }
+// _________________________________________________________________________________________________________________개발
+
+	/**
+	 * 게시판 마스터 목록을 조회한다.
+	 *
+	 * @param boardMasterVO
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/adm/bbs/SelectBBSMaster.do")
+	public String selectBBSMaster(@ModelAttribute("searchVO") BoardMasterVO boardMasterVO, ModelMap model) throws Exception {
+
+		// server-side 권한 확인
+//		if (!checkAuthority(model)) {
+//			return "cmm/uat/uia/EgovLoginUsr";
+//		}
+
+		boardMasterVO.setPageUnit(propertyService.getInt("pageUnit"));
+		boardMasterVO.setPageSize(propertyService.getInt("pageSize"));
+
+		PaginationInfo paginationInfo = new PaginationInfo();
+
+		paginationInfo.setCurrentPageNo(boardMasterVO.getPageIndex());
+		paginationInfo.setRecordCountPerPage(boardMasterVO.getPageUnit());
+		paginationInfo.setPageSize(boardMasterVO.getPageSize());
+
+		boardMasterVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		boardMasterVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		boardMasterVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+
+		Map<String, Object> map = bbsAttrbService.selectBBSMasterInfs(boardMasterVO);
+		int totCnt = Integer.parseInt((String)map.get("resultCnt"));
+
+		paginationInfo.setTotalRecordCount(totCnt);
+
+		model.addAttribute("resultList", map.get("resultList"));
+		model.addAttribute("resultCnt", map.get("resultCnt"));
+		model.addAttribute("paginationInfo", paginationInfo);
+
+		return "adm/bbs/EgovBoardMstrList";
+	}
 }

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -73,7 +74,7 @@ public class EgovLoginController {
 	 * @return result - 로그인결과(세션정보)
 	 * @exception Exception
 	 */
-	@RequestMapping(value = "/uat/uia/actionLogin.do")
+	@PostMapping(value = "/login")
 	public String actionLogin(@ModelAttribute("loginVO") LoginVO loginVO, HttpServletRequest request, ModelMap model) throws Exception {
 
 		// 1. 일반 로그인 처리
@@ -84,11 +85,12 @@ public class EgovLoginController {
 		if (resultVO != null && resultVO.getId() != null && !resultVO.getId().equals("") && loginPolicyYn) {
 
 			request.getSession().setAttribute("LoginVO", resultVO);
-			return "forward:/cmm/main/mainPage.do";
-		} else {
+			return "redirect:/index";
+		}
+		else {
 
 			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
-			return "cmm/uat/uia/EgovLoginUsr";
+			return "login/login";
 		}
 
 	}

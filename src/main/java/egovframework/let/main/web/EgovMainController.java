@@ -2,6 +2,7 @@ package egovframework.let.main.web;
 
 import java.util.Map;
 
+import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.ComDefaultVO;
 import egovframework.let.cop.bbs.service.BoardVO;
 import egovframework.let.cop.bbs.service.EgovBBSManageService;
@@ -10,6 +11,7 @@ import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -101,6 +103,10 @@ public class EgovMainController {
 	}
 
 
+//	________________________________________________________________________________________________________________개발
+
+
+
 	/**
 	 * Thymeleaf 호출 테스트
 	 * @param model
@@ -108,11 +114,11 @@ public class EgovMainController {
 	 * @throws Exception
 	 */
 
-	@RequestMapping("/welcome-thymeleaf.do")
-	public String welcome(Model model) throws Exception {
-		LOGGER.debug("thymeleaf test !!!");
-		model.addAttribute("greeting", "Hello Thymeleaf!");
-		return "thymeleaf/welcome";
+	@RequestMapping(value = {"/", "/index"})
+	public String index(Model model, HttpSession session) throws Exception {
+//		LoginVO loginVO = (LoginVO)session.getAttribute("LoginVO");
+//		model.addAttribute("loginVO", loginVO);
+		return "index";
 
 	}
 }

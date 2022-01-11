@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="include/head.html :: head(pageCss)"></head>
+
+<th:block th:fragment="pageCss">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</th:block>
+
+<body>
+<header style="width: 100%; background: #eee;">
+    <th:block th:if="${loginVO == null}">
+        <a href="/login">로그인</a>
+    </th:block>
+</header>
+
+
+<th:block th:replace="include/footer.html :: footer(pageJs)"></th:block>
+
+<th:block th:fragment="pageJs">
+    <script th:src="@{/js/index.js}"></script>
+</th:block>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="include/head.html :: head(pageCss)"></head>
+
+<th:block th:fragment="pageCss">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <style>
+        input {background: #eee; border: 1px solid black; width: 150px; height: 30px; }
+    </style>
+</th:block>
+
+<body>
+    <div>
+        <h3>로그인</h3>
+        <form name="loginForm" method="post" action="/login">
+            <input id="id" name="id" type="text" value="" /><br />
+            <input id="password" name="password"  type="password" value="" /><br />
+            <input type="hidden" name="userSe"  value="USR"/>
+            <button type="submit">확인</button>
+        </form>
+    </div>
+    <div th:if="${message != ''}">
+        <p th:text="${message}"></p>
+    </div>
+
+
+
+
+    <th:block th:replace="include/footer.html :: footer(pageJs)"></th:block>
+
+
+    <th:block th:fragment="pageJs">
+        <script th:src="@{/js/index.js}"></script>
+    </th:block>
+</body>
+</html>
