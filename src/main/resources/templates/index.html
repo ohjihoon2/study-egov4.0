@@ -12,6 +12,10 @@
     <th:block th:if="${loginVO == null}">
         <a href="/login">로그인</a>
     </th:block>
+    <th:block th:if="${loginVO != null}">
+        <p>[[${loginVO.name}]] 님 환영합니다.</p>
+        <a href="/uat/uia/actionLogout.do">로그아웃</a>
+    </th:block>
 </header>
 
 

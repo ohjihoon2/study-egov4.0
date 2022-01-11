@@ -125,7 +125,7 @@ public class EgovLoginController {
 
 		RequestContextHolder.getRequestAttributes().removeAttribute("LoginVO", RequestAttributes.SCOPE_SESSION);
 
-		return "forward:/cmm/main/mainPage.do";
+		return "forward:/index";
 	}
 
 }
