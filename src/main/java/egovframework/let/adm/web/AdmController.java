@@ -1,8 +1,12 @@
 package egovframework.let.adm.web;
 
 import egovframework.com.cmm.ComDefaultVO;
+import egovframework.com.cmm.EgovMessageSource;
+import egovframework.com.cmm.LoginVO;
+import egovframework.com.cmm.util.EgovUserDetailsHelper;
 import egovframework.let.cop.bbs.service.BoardVO;
 import egovframework.let.cop.bbs.service.EgovBBSManageService;
+import org.egovframe.rte.fdl.cmmn.exception.EgovBizException;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +19,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
+
+import static sun.net.util.IPAddressUtil.checkAuthority;
 
 /**
  * 템플릿 메인 페이지 컨트롤러 클래스(Sample 소스)
@@ -45,9 +52,38 @@ public class AdmController {
 	@Resource(name = "EgovBBSManageService")
 	private EgovBBSManageService bbsMngService;
 
+	/** EgovMessageSource */
+	@Resource(name="egovMessageSource")
+	EgovMessageSource egovMessageSource;
+
+
+	/**
+	 * 운영자 권한을 확인한다.(로그인 여부를 확인한다.)
+	 *
+	 * @param boardMaster
+	 * @throws EgovBizException
+	 */
+	protected boolean checkAuthority(ModelMap model) throws Exception {
+		// 사용자권한 처리
+		if(!EgovUserDetailsHelper.isAuthenticated()) {
+//			model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+
 	@RequestMapping("")
-	public String index(Model model) throws Exception {
-//		model.addAttribute("greeting", "Hello Thymeleaf!");
+	public String index(ModelMap model, HttpSession session) throws Exception {
+		System.out.println("model.toString() = " + model.toString());
+		if (!checkAuthority(model)) {
+			// server-side 권한 확인
+			return "redirect:/";
+		}
+
+		LoginVO loginVO = (LoginVO)session.getAttribute("LoginVO");
+		model.addAttribute("loginVO", loginVO);
 		return "adm/main";
 
 	}

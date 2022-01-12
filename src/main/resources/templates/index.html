@@ -5,18 +5,28 @@
 
 <th:block th:fragment="pageCss">
     <link rel="stylesheet" th:href="@{/css/index.css}">
+    <style>
+        header {width: calc(100% - 20px); padding: 10px;background: #eee;}
+        header div {display: inline-block;}
+    </style>
 </th:block>
 
 <body>
-<header style="width: 100%; background: #eee;">
+<header>
     <th:block th:if="${loginVO == null}">
-        <a href="/login">로그인</a>
+        <div>환영합니다 로그인하세요.</div>
+        <div style="float: right;">
+            <a href="/login">로그인</a>
+        </div>
     </th:block>
     <th:block th:if="${loginVO != null}">
-        <p>[[${loginVO.name}]] 님 환영합니다.</p>
-        <p>[(${loginVO})] 님 환영합니다.</p>
-<!--        <p><span th:utext="${loginVO.toString()}"/> 님 환영합니다.</p>-->
-        <a href="/uat/uia/actionLogout.do">로그아웃</a>
+        <div>[[${loginVO.name}]] 님 환영합니다.</div>
+        <div style="float: right;">
+                <th:block th:if="${loginVO.userSe == 'USR'}">
+                    <a href="/adm">관리자</a>
+                </th:block>
+            <a href="/uat/uia/actionLogout.do">로그아웃</a>
+        </div>
     </th:block>
 </header>
 
