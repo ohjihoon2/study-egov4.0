@@ -66,9 +66,8 @@ public class AdmController {
 		}
 	}
 
-	@RequestMapping(value = {"/", "/admIndex"})
+	@RequestMapping(value = {"", "/admIndex"})
 	public String admIndex(ModelMap model, HttpSession session) throws Exception {
-		System.out.println("model.toString() = " + model.toString());
 		if (!checkAuthority(model)) {
 			// server-side 권한 확인
 			return "redirect:/";
@@ -76,7 +75,7 @@ public class AdmController {
 
 		LoginVO loginVO = (LoginVO)session.getAttribute("LoginVO");
 		model.addAttribute("loginVO", loginVO);
-		return "admIndex";
+		return "adm/admIndex";
 
 	}
 }
