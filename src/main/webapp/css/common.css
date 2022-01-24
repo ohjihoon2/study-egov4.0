@@ -86,18 +86,18 @@ select {
 
 #main_container a:link {
     color: #666666;
-    letter-spacing: 0px;
+    comter-spacing: 0px;
     text-decoration: none;
 }
 #main_container a:visited {
     color: #666666;
-    letter-spacing: 0px;
+    comter-spacing: 0px;
     text-decoration: none;
 }
 
 #main_container a:active {
     color: #F29113;
-    letter-spacing: 0px;
+    comter-spacing: 0px;
     text-decoration: none;
 }
 #main_container a:hover {
@@ -108,7 +108,7 @@ select {
 #header{padding-top:5px;width:1060px;}    
 #logoarea{float:left;padding-left:10px;padding-top:10px;}
 #nia_logo{float:left;padding-left:5px;}
-#project_title{float:left;padding-top: 21px;padding-left:14px;font-size:130%;letter-spacing:-1px;}
+#project_title{float:left;padding-top: 21px;padding-left:14px;font-size:130%;comter-spacing:-1px;}
 #project_title .maintitle{color:#D315A0;font-weight:bold;padding-left:1px; }
 #list_div {}
 #list_div th{font-size:100%;}
@@ -116,7 +116,7 @@ select {
 
 #search_field{clear:both;width:800px;}
 #search_field_loc{padding-top:10px;padding-bottom:10px;}
-#search_field h2{display:inline;padding-top:40px;padding-left:0px;letter-spacing:-2px;color:#2d2d2d; font-size:14px;}
+#search_field h2{display:inline;padding-top:40px;padding-left:0px;comter-spacing:-2px;color:#2d2d2d; font-size:14px;}
     
 #search_field fieldset{border:2px solid #E8D0EB;min-height: 48px;height:48px;}
 .sf_start{padding-top:10px;margin-bottom:10px;}
@@ -132,13 +132,13 @@ select {
 #content{float:left;min-height:441px; height:auto !important; height:441px;padding-left:15px;padding-bottom:10px; border-left:1px solid #dddddd; width:800px; line-height:22px;}
 #footer{clear:both;width:100%;font-size:100%;border-top:2px solid #dddddd;padding-top:10px;}
 #mopaslogo{float:left;padding-top:10px;padding-left:10px;}
-#copyright{float:left;font-size:90%;padding-top:20px;padding-left:20px; letter-spacing: -1px;}
+#copyright{float:left;font-size:90%;padding-top:20px;padding-left:20px; comter-spacing: -1px;}
 #nialogo{float:left;padding-top:0px;padding-left:10px;padding-right:15px;}
 
 /* content area */
 #cur_loc{clear:both;float:left;border-bottom:1px solid #e1e1e1;width:817px;}
 #cur_loc_align{float:left; }
-#cur_loc ul{list-style-type:none;padding-top:13px;padding-right:10px; letter-spacing: -1px;}
+#cur_loc ul{list-style-type:none;padding-top:13px;padding-right:10px; comter-spacing: -1px;}
 #cur_loc li{display:inline;font-size:90%;color:#727272;padding-right:1px;padding-left:1px;}
 
 /* leftmenu */
@@ -156,28 +156,28 @@ select {
 
 
 
-.leftmenu_dept01{width:100%;font-size:125%; line-height:30px; letter-spacing: -1px;}
+.leftmenu_dept01{width:100%;font-size:125%; line-height:30px; comter-spacing: -1px;}
 .leftmenu_dept01 a{font-weight:bold;}
 
 .leftmenu_dept01 a:link {
     color: #666666;
-    letter-spacing: -1px;
+    comter-spacing: -1px;
     text-decoration: none;
 }
 .leftmenu_dept01 a:visited {
     color: #666666;
-    letter-spacing: -1px;
+    comter-spacing: -1px;
     text-decoration: none;
 }
 
 .leftmenu_dept01 a:active {
     color: orange;
-    letter-spacing: -1px;
+    comter-spacing: -1px;
     text-decoration: none;
 }
 .leftmenu_dept01 a:hover {
     color: orange;
-    letter-spacing: -1px;
+    comter-spacing: -1px;
     text-decoration: none;
 }
 .dept02 {height:30px; }
@@ -185,26 +185,26 @@ select {
 .dept02 a:link {
     color: #666666;
     font-size: 11px;
-    letter-spacing: -1px;
+    comter-spacing: -1px;
     text-decoration: none;
 }
 .dept02 a:visited {
     color: #666666;
     font-size: 11px;
-    letter-spacing: -1px;
+    comter-spacing: -1px;
     text-decoration: none;
 }
 
 .dept02 a:active {
     color: blue;
     font-size: 11px;
-    letter-spacing: -1px;
+    comter-spacing: -1px;
     text-decoration: none;
 }
 .dept02 a:hover {
     color: blue;
     font-size: 11px;
-    letter-spacing: -1px;
+    comter-spacing: -1px;
     text-decoration: none;
 }
 
@@ -329,7 +329,7 @@ select {
 }
 #content_img_div{clear:both;float:left;margin-top:20px;}
 .content_field{float:left;}
-.content_field h2{background: url("../images/bl/bl_h2.gif") no-repeat left center; vertical-align: bottom;padding-left:17px;font-size: 120%;; letter-spacing: -1px;}
+.content_field h2{background: url("../images/bl/bl_h2.gif") no-repeat left center; vertical-align: bottom;padding-left:17px;font-size: 120%;; comter-spacing: -1px;}
 .content_field h3{background: url("../images/bl/bl_h3.gif") no-repeat left center; vertical-align: bottom;padding-left:12px;font-size:110%;}
 .content_field fieldset{border:1px solid #C75DF2;padding:10px;line-height:30px;width:800px;line-height:30px;}
 
@@ -452,18 +452,18 @@ select {
 #header_loginname a{font-weight:bold;}
 #header_loginname a:link {
     color: #F29113;
-    letter-spacing: 0px;
+    comter-spacing: 0px;
     text-decoration: none;
 }
 #header_loginname a:visited {
     color: #F29113;
-    letter-spacing: 0px;
+    comter-spacing: 0px;
     text-decoration: none;
 }
 
 #header_loginname a:active {
     color: #F29113;
-    letter-spacing: 0px;
+    comter-spacing: 0px;
     text-decoration: none;
 }
 #header_loginname a:hover {

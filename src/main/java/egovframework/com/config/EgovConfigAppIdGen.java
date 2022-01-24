@@ -525,6 +525,23 @@ public class EgovConfigAppIdGen {
 			.build();
 	}
 
+
+	/** 게시판용 NTT_ID Generation  Config
+	 * @return
+	 */
+	@Bean(destroyMethod = "destroy")
+	public EgovTableIdGnrServiceImpl egovBlogIdGnrService() {
+		return new EgovIdGnrBuilder().setDataSource(egovDataSource)
+			.setEgovIdGnrStrategyImpl(new EgovIdGnrStrategyImpl())
+			.setBlockSize(10)
+			.setTable("COMTECOPSEQ")
+			.setTableName("BLOG_ID")
+			.setPreFix("BLOG_") //TODO : 입력하지 않았을때 처리 필요
+			.setCipers(15)
+			.setFillChar('0')
+			.build();
+	}
+
 	/** Clb ID Generation  Config
 	 * @return
 	 */

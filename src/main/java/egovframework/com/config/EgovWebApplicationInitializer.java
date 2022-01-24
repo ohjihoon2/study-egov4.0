@@ -108,6 +108,8 @@ public class EgovWebApplicationInitializer implements WebApplicationInitializer 
 		characterEncoding.addMappingForUrlPatterns(null, false, "*.do");
 	}
 
+
+
 	/**
 	 * @param servletContext
 	 * CORSFilter 설정

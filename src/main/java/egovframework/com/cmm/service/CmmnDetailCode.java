@@ -15,12 +15,18 @@ import java.io.Serializable;
  *   수정일      수정자           수정내용
  *  -------    --------    ---------------------------
  *   2009.04.01  이중호          최초 생성
+ *   2017.09.07	이정은		표준프레임워크 v3.7 개선(clCode 추가)
  *
  * </pre>
  */
 public class CmmnDetailCode implements Serializable {
 
-	private static final long serialVersionUID = -6508801327314181679L;
+	private static final long serialVersionUID = 1L;
+
+	/*
+	 * 분류코드
+	 */
+	private String clCode = "";
 
 	/*
 	 * 코드ID
@@ -33,17 +39,17 @@ public class CmmnDetailCode implements Serializable {
     private String codeIdNm = "";
 
     /*
-     * 코드
+     * 상세코드
      */
 	private String code = "";
 
 	/*
-	 * 코드명
+	 * 상세코드명
 	 */
     private String codeNm = "";
 
     /*
-     * 코드설명
+     * 상세코드설명
      */
     private String codeDc = "";
 
@@ -62,7 +68,24 @@ public class CmmnDetailCode implements Serializable {
      */
     private String lastUpdusrId   = "";
 
-	/**
+
+    /**
+     * clCode attribute 를 리턴한다.
+     * @return String
+     */
+    public String getClCode() {
+    	return clCode;
+    }
+    
+    /**
+     * clCode attribute 값을 설정한다.
+     * @param clCode String
+     */
+    public void setClCode(String clCode) {
+    	this.clCode = clCode;
+    }
+
+    /**
 	 * codeId attribute 를 리턴한다.
 	 * @return String
 	 */

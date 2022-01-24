@@ -92,7 +92,7 @@
 .board_view2 {border-top: 2px solid #222;}
 .board_view2 dl {display: table; width: 100%; table-layout: fixed; border-bottom: 1px solid #dde2e5;}
 .board_view2 dl > * {display: table-cell; table-layout: fixed; vertical-align: middle;}
-.board_view2 dl dt {width: 176px; padding: 12px 25px; color: #000; font-size: 18px; letter-spacing: -2px; background: #f5f6f7; word-break: break-all;}
+.board_view2 dl dt {width: 176px; padding: 12px 25px; color: #000; font-size: 18px; comter-spacing: -2px; background: #f5f6f7; word-break: break-all;}
 .board_view2 dl dt .req {display: inline-block; width: 7px; height: 7px; margin-left: 2px; font-size: 0; background: url(css/images/ico_req.png) no-repeat; vertical-align: 17px;}
 .board_view2 dl dd {padding: 12px 15px; color: #222; font-size: 16px; font-weight: 300;}
 .board_view2 .file_add {margin-top: 5px;}
@@ -118,7 +118,7 @@
 .board_view3 .info2 .left_col {width: 210px;}
 .board_view3 .info2 .left_col img {display: block; width: 160px; height: 110px;}
 .board_view3 .info2 .left_col .btn {margin-top: 20px;}
-.board_view3 .info2 .left_col .guide {margin-top: 14px; color: #666; font-size: 14px; line-height: 24px; letter-spacing: -.5px;}
+.board_view3 .info2 .left_col .guide {margin-top: 14px; color: #666; font-size: 14px; line-height: 24px; comter-spacing: -.5px;}
 .board_view3 .info2 .right_col {width: auto;}
 .board_view3 .info2 .right_col dl {display: table; table-layout: fixed; width: 100%; background: #fff;}
 .board_view3 .info2 .right_col dl > * {display: table-cell; font-size: 16px; font-weight: 300;}
@@ -236,12 +236,12 @@ select::-ms-expand {display:none;}
 
 
 /* Title */
-.tit_1 {position: relative; padding-bottom: 50px; color: #222; font-size: 48px; font-weight: 500; letter-spacing: -2px; line-height: 48px;}
+.tit_1 {position: relative; padding-bottom: 50px; color: #222; font-size: 48px; font-weight: 500; comter-spacing: -2px; line-height: 48px;}
 .tit_1::after {content: ""; display: block; position: absolute; left: 0; bottom: 0; width: 30px; height: 2px; background: #0465be;}
 
 .tit_2 {font-size: 30px; font-weight: 700;}
 
-.tit_3 {color: #222; font-size: 48px; font-weight: 500; line-height: 44px; letter-spacing: -2px;}
+.tit_3 {color: #222; font-size: 48px; font-weight: 500; line-height: 44px; comter-spacing: -2px;}
 
 .tit_4 {position: relative; padding-top: 12px; font-size: 30px; font-weight: 700;}
 .tit_4::before {content: ""; display: block; position: absolute; left: 0; top: 0; width: 30px; height: 2px; background: #0465be;}
@@ -254,7 +254,7 @@ select::-ms-expand {display:none;}
 
 
 /* Maessage box */
-.msg_1 {padding: 33px 40px; border-top: 2px solid #dde2e5; border-radius: 0 0 10px 10px; color: #454545; font-size: 20px; line-height: 30px; letter-spacing: -1px; background: #f7f7f7;}
+.msg_1 {padding: 33px 40px; border-top: 2px solid #dde2e5; border-radius: 0 0 10px 10px; color: #454545; font-size: 20px; line-height: 30px; comter-spacing: -1px; background: #f7f7f7;}
 
 
 /* List */

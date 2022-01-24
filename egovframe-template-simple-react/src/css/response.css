@@ -22,7 +22,7 @@
 
     .all_menu.Mobile {display: block; position: fixed; left: -800px; top: 0; width: 100%; height: 100%; background: #fff; overflow-y: auto;}
     .user_info_m {display: block; position: relative; height: 70px; padding: 0 20px; color: #666; font-size: 12px; line-height: 70px; background: #fff;}
-    .user_info_m .person {color: #169bd5; font-weight: 700; letter-spacing: -1px;}
+    .user_info_m .person {color: #169bd5; font-weight: 700; comter-spacing: -1px;}
     .user_info_m .person::before {content: ""; display: inline-block; width: 22px; height: 22px; margin-right: 9px; background: url(css/images/ico_person.png) no-repeat; background-size: contain; vertical-align: -6px;}
     .user_info_m .login {width: 85px; height: 30px; margin-top: 20px; border-radius: 15px; color: #fff; font-size: 12px; line-height: 30px; text-align: center; background: #169bd5;}
     .user_info_m .logout {margin-left: 5px; color: #222; font-weight: 700; text-decoration: underline;}
@@ -262,7 +262,7 @@
     .P_MAIN .banner > a span {font-size: 13px; line-height: 18px;}
 
     .P_MAIN .banner_bot {padding: 60px 20px 10px 20px;}
-    .P_MAIN .banner_bot > div {width: calc(50% - 10px); height: 260px; margin-bottom: 20px; padding: 0 15px; letter-spacing: -1px;}
+    .P_MAIN .banner_bot > div {width: calc(50% - 10px); height: 260px; margin-bottom: 20px; padding: 0 15px; comter-spacing: -1px;}
     .P_MAIN .banner_bot > div:nth-child(2n)  {margin-left: 20px;}
     .P_MAIN .banner_bot > div + div {margin-left: 0;}
     .P_MAIN .banner_bot > div h2 {font-size: 16px;}
@@ -360,7 +360,7 @@
     .BOARD_CREATE_REG .board_view2 dl dd .f_select,
     .BOARD_CREATE_REG .board_view2 dl dd .f_search2 {width: 100%;}
 
-    .SITE_INTRO .ds_1 .t_1 {margin-top: 21px; font-size: 13px; letter-spacing: -1px;}
+    .SITE_INTRO .ds_1 .t_1 {margin-top: 21px; font-size: 13px; comter-spacing: -1px;}
     .SITE_INTRO .ds_1 .li_1 {margin-top: 17px;}
     .SITE_INTRO .ds_1 .li_1 li {width: 100px; height: 100px; padding-top: 30px; border-width: 4px !important; font-size: 11px; line-height: 15px;}
     .SITE_INTRO .ds_1 .li_1 li + li {margin-left: 17px;}
@@ -453,7 +453,7 @@
     .SITE_CONTACT_US .way > * {display: block; width: 100%;}
     .SITE_CONTACT_US .way h3 {padding-bottom: 18px; font-size: 14px;}
     .SITE_CONTACT_US .way dl > * {font-size: 12px;}
-    .SITE_CONTACT_US .way .left_col dl dt {width: 85px; letter-spacing: -1px;}
+    .SITE_CONTACT_US .way .left_col dl dt {width: 85px; comter-spacing: -1px;}
     .SITE_CONTACT_US .way .left_col dl dt::before {top: 0; width: 14px; height: 18px; background: url(css/images/ico_subway.png) no-repeat; background-size: contain;}
     .SITE_CONTACT_US .way .right_col {margin-top: 28px;}
     .SITE_CONTACT_US .way .right_col dl dt.call::before {top: 2px;}

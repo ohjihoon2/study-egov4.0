@@ -48,4 +48,14 @@ public class EgovConfigAppWhitelist {
 		whiteList.add("main/sample_menu/EgovService");
 		return whiteList;
 	}
+
+	@Bean
+	public List<String> egovNextUrlWhitelist(){
+		List<String> whiteList = new ArrayList<>();
+
+		whiteList.add("/uss/umt/EgovMberSbscrbView.do");
+		whiteList.add("/uss/umt/EgovEntrprsMberSbscrbView.do");
+		whiteList.add("/uss/olh/qna/QnaCnRegistView.do");
+		return whiteList;
+	}
 }

@@ -1,11 +1,10 @@
 package egovframework.com.cmm.service.impl;
 
+import egovframework.com.cmm.service.FileVO;
+import org.springframework.stereotype.Repository;
+
 import java.util.Iterator;
 import java.util.List;
-
-import egovframework.com.cmm.service.FileVO;
-
-import org.springframework.stereotype.Repository;
 
 /**
  * @Class Name : EgovFileMngDAO.java
@@ -70,7 +69,6 @@ public class FileManageDAO extends EgovComAbstractDAO {
 		Iterator<?> iter = fileList.iterator();
 		while (iter.hasNext()) {
 			vo = (FileVO) iter.next();
-
 			insert("FileManageDAO.insertFileDetail", vo);
 		}
 	}

@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .Plogin {padding-bottom: 100px;}
-.Plogin h1 {color: #222; font-size: 48px; font-weight: 500; letter-spacing: -2px; line-height: 48px; text-align: center;}
+.Plogin h1 {color: #222; font-size: 48px; font-weight: 500; comter-spacing: -2px; line-height: 48px; text-align: center;}
 .Plogin .txt {margin-top: 43px; color: #666; font-size: 20px; line-height: 30px; text-align: center;}
 .Plogin .login_box {position: relative; width: 690px; margin: 54px auto 0; padding: 70px 95px ; border: 1px solid #dde2e5; border-radius: 25px; box-shadow: 3px 4px 5px #ccc;}
 .Plogin .login_box .group {display: block; width: 320px;}
@@ -237,7 +237,7 @@
     .SITE_CONTACT_US .addr .left_col dl dt::before {content: ""; display: inline-block; width: 12px; height: 19px; margin-right: 10px; background: url(css/images/ico_address.png) no-repeat; vertical-align: -4px;}
     .SITE_CONTACT_US .addr .left_col dl dd {width: auto; color: #666;}
     .SITE_CONTACT_US .addr .right_col {position: relative; width: 296px; padding-top: 25px;}
-    .SITE_CONTACT_US .addr .right_col h3 {color: #222; font-size: 16px; font-weight: 400; letter-spacing: -1px;}
+    .SITE_CONTACT_US .addr .right_col h3 {color: #222; font-size: 16px; font-weight: 400; comter-spacing: -1px;}
     .SITE_CONTACT_US .addr .right_col p {margin-top: 6px; color: #666; font-size: 15px; font-weight: 300; line-height: 18px;}
     .SITE_CONTACT_US .addr .right_col .qr {position: absolute; right: 0; top: 14px;}
 
@@ -261,7 +261,7 @@
     .BUSINESS_INTRO .img .m {display: none;}
     .BUSINESS_INTRO .img img {max-width: 100%;}
 
-    .SERVICE_INTRO .msg {padding: 33px 40px; border-top: 2px solid #dde2e5; border-radius: 0 0 10px 10px; color: #454545; letter-spacing: -1px; background: #f7f7f7;}
+    .SERVICE_INTRO .msg {padding: 33px 40px; border-top: 2px solid #dde2e5; border-radius: 0 0 10px 10px; color: #454545; comter-spacing: -1px; background: #f7f7f7;}
     .SERVICE_INTRO .msg p {font-size: 20px; line-height: 30px;}
     .SERVICE_INTRO .msg ul {margin-top: 48px; padding-left: 264px; background: url(css/images/ico_service_intro1.png) no-repeat 14px 30px;}
     .SERVICE_INTRO .msg ul li {position: relative; padding-left: 16px; font-size: 16px; font-weight: 300; line-height: 24px;}

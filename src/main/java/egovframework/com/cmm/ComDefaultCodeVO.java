@@ -1,8 +1,8 @@
 package egovframework.com.cmm;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.io.Serializable;
 
 /**
  *  클래스
@@ -13,43 +13,39 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  * <pre>
  * << 개정이력(Modification Information) >>
- *
+ *   
  *   수정일      수정자           수정내용
  *  -------       --------    ---------------------------
  *   2009.3.11   이삼섭          최초 생성
  *
  * </pre>
  */
+@SuppressWarnings("serial")
 public class ComDefaultCodeVO implements Serializable {
-    /**
-	 *  serialVersion UID
-	 */
-	private static final long serialVersionUID = -2020648489890016404L;
-
-	/** 코드 ID */
+    /** 코드 ID */
     private String codeId = "";
-
+    
     /** 상세코드 */
     private String code = "";
-
+    
     /** 코드명 */
     private String codeNm = "";
-
+    
     /** 코드설명 */
     private String codeDc = "";
-
+    
     /** 특정테이블명 */
     private String tableNm = "";	//특정테이블에서 코드정보를추출시 사용
-
+    
     /** 상세 조건 여부 */
     private String haveDetailCondition = "N";
-
+    
     /** 상세 조건 */
     private String detailCondition = "";
-
+    
     /**
      * codeId attribute를 리턴한다.
-     *
+     * 
      * @return the codeId
      */
     public String getCodeId() {
@@ -58,7 +54,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * codeId attribute 값을 설정한다.
-     *
+     * 
      * @param codeId
      *            the codeId to set
      */
@@ -68,7 +64,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * code attribute를 리턴한다.
-     *
+     * 
      * @return the code
      */
     public String getCode() {
@@ -77,7 +73,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * code attribute 값을 설정한다.
-     *
+     * 
      * @param code
      *            the code to set
      */
@@ -87,7 +83,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * codeNm attribute를 리턴한다.
-     *
+     * 
      * @return the codeNm
      */
     public String getCodeNm() {
@@ -96,7 +92,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * codeNm attribute 값을 설정한다.
-     *
+     * 
      * @param codeNm
      *            the codeNm to set
      */
@@ -106,7 +102,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * codeDc attribute를 리턴한다.
-     *
+     * 
      * @return the codeDc
      */
     public String getCodeDc() {
@@ -115,7 +111,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * codeDc attribute 값을 설정한다.
-     *
+     * 
      * @param codeDc
      *            the codeDc to set
      */
@@ -125,7 +121,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * tableNm attribute를 리턴한다.
-     *
+     * 
      * @return the tableNm
      */
     public String getTableNm() {
@@ -134,7 +130,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * tableNm attribute 값을 설정한다.
-     *
+     * 
      * @param tableNm
      *            the tableNm to set
      */
@@ -144,7 +140,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * haveDetailCondition attribute를 리턴한다.
-     *
+     * 
      * @return the haveDetailCondition
      */
     public String getHaveDetailCondition() {
@@ -153,7 +149,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * haveDetailCondition attribute 값을 설정한다.
-     *
+     * 
      * @param haveDetailCondition
      *            the haveDetailCondition to set
      */
@@ -163,7 +159,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * detailCondition attribute를 리턴한다.
-     *
+     * 
      * @return the detailCondition
      */
     public String getDetailCondition() {
@@ -172,7 +168,7 @@ public class ComDefaultCodeVO implements Serializable {
 
     /**
      * detailCondition attribute 값을 설정한다.
-     *
+     * 
      * @param detailCondition
      *            the detailCondition to set
      */

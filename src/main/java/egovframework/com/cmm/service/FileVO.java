@@ -1,8 +1,8 @@
 package egovframework.com.cmm.service;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.io.Serializable;
 
 /**
  * @Class Name : FileVO.java
@@ -19,13 +19,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  * @see
  *
  */
+@SuppressWarnings("serial")
 public class FileVO implements Serializable {
 
     /**
-	 *  serialVersion UID
-	 */
-	private static final long serialVersionUID = -287950405903719128L;
-	/**
      * 첨부파일 아이디
      */
     public String atchFileId = "";
@@ -64,7 +61,7 @@ public class FileVO implements Serializable {
 
     /**
      * atchFileId attribute를 리턴한다.
-     *
+     * 
      * @return the atchFileId
      */
     public String getAtchFileId() {
@@ -73,7 +70,7 @@ public class FileVO implements Serializable {
 
     /**
      * atchFileId attribute 값을 설정한다.
-     *
+     * 
      * @param atchFileId
      *            the atchFileId to set
      */
@@ -83,7 +80,7 @@ public class FileVO implements Serializable {
 
     /**
      * creatDt attribute를 리턴한다.
-     *
+     * 
      * @return the creatDt
      */
     public String getCreatDt() {
@@ -92,7 +89,7 @@ public class FileVO implements Serializable {
 
     /**
      * creatDt attribute 값을 설정한다.
-     *
+     * 
      * @param creatDt
      *            the creatDt to set
      */
@@ -102,7 +99,7 @@ public class FileVO implements Serializable {
 
     /**
      * fileCn attribute를 리턴한다.
-     *
+     * 
      * @return the fileCn
      */
     public String getFileCn() {
@@ -111,7 +108,7 @@ public class FileVO implements Serializable {
 
     /**
      * fileCn attribute 값을 설정한다.
-     *
+     * 
      * @param fileCn
      *            the fileCn to set
      */
@@ -121,7 +118,7 @@ public class FileVO implements Serializable {
 
     /**
      * fileExtsn attribute를 리턴한다.
-     *
+     * 
      * @return the fileExtsn
      */
     public String getFileExtsn() {
@@ -130,7 +127,7 @@ public class FileVO implements Serializable {
 
     /**
      * fileExtsn attribute 값을 설정한다.
-     *
+     * 
      * @param fileExtsn
      *            the fileExtsn to set
      */
@@ -140,7 +137,7 @@ public class FileVO implements Serializable {
 
     /**
      * fileMg attribute를 리턴한다.
-     *
+     * 
      * @return the fileMg
      */
     public String getFileMg() {
@@ -149,7 +146,7 @@ public class FileVO implements Serializable {
 
     /**
      * fileMg attribute 값을 설정한다.
-     *
+     * 
      * @param fileMg
      *            the fileMg to set
      */
@@ -159,7 +156,7 @@ public class FileVO implements Serializable {
 
     /**
      * fileSn attribute를 리턴한다.
-     *
+     * 
      * @return the fileSn
      */
     public String getFileSn() {
@@ -168,7 +165,7 @@ public class FileVO implements Serializable {
 
     /**
      * fileSn attribute 값을 설정한다.
-     *
+     * 
      * @param fileSn
      *            the fileSn to set
      */
@@ -178,7 +175,7 @@ public class FileVO implements Serializable {
 
     /**
      * fileStreCours attribute를 리턴한다.
-     *
+     * 
      * @return the fileStreCours
      */
     public String getFileStreCours() {
@@ -187,7 +184,7 @@ public class FileVO implements Serializable {
 
     /**
      * fileStreCours attribute 값을 설정한다.
-     *
+     * 
      * @param fileStreCours
      *            the fileStreCours to set
      */
@@ -197,7 +194,7 @@ public class FileVO implements Serializable {
 
     /**
      * orignlFileNm attribute를 리턴한다.
-     *
+     * 
      * @return the orignlFileNm
      */
     public String getOrignlFileNm() {
@@ -206,7 +203,7 @@ public class FileVO implements Serializable {
 
     /**
      * orignlFileNm attribute 값을 설정한다.
-     *
+     * 
      * @param orignlFileNm
      *            the orignlFileNm to set
      */
@@ -216,7 +213,7 @@ public class FileVO implements Serializable {
 
     /**
      * streFileNm attribute를 리턴한다.
-     *
+     * 
      * @return the streFileNm
      */
     public String getStreFileNm() {
@@ -225,7 +222,7 @@ public class FileVO implements Serializable {
 
     /**
      * streFileNm attribute 값을 설정한다.
-     *
+     * 
      * @param streFileNm
      *            the streFileNm to set
      */
@@ -239,5 +236,5 @@ public class FileVO implements Serializable {
     public String toString() {
 	return ToStringBuilder.reflectionToString(this);
     }
-
+	
 }

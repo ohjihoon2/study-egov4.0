@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  수정일                   수정자            수정내용
+  =========     =======    =================================================
+  2011.08.26   	서준식            SSO 로그인을 위한 쿼리 추가
+  2011.09.27    서준식            컬럼 변경 SUB_DN 을  CRTFC_DN_VALUE 로 변경
+  2011.09.28    서준식            컬럼 변경 entrprsmber_id 을  ENTRPRS_MBER_ID 로 변경
+  2020.07.06    신용호            비밀번호 만료여부 조회
+  2021.05.30    정진오            디지털원패스 로그인을 위한 쿼리 추가
+-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LoginUsrSecurity">
+
+    <!-- 로그인 처리를 위한 resultMap -->
+    <resultMap id="resultUserVO" type="egovframework.com.login.service.impl.UserVO">
+        <result property="userId" column="USER_ID" />
+        <result property="userPassword" column="USER_PASSWORD" />
+        <result property="userName" column="USER_NAME" />
+        <result property="userAuthority" column="USER_AUTHORITY" />
+        <result property="userEnabled" column="USER_ENABLED" />
+    </resultMap>
+
+    <select id="getUserById" parameterType="String" resultMap="resultUserVO">
+        SELECT
+            USER_ID
+             , USER_PASSWORD
+             , USER_NAME
+             , USER_AUTHORITY
+             , USER_ENABLED
+        FROM TB_USER
+        WHERE USER_ID = #{userId}
+    </select>
+</mapper>

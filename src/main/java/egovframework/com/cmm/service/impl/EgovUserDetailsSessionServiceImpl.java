@@ -1,14 +1,10 @@
 package egovframework.com.cmm.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import egovframework.com.cmm.service.EgovUserDetailsService;
-
+import egovframework.com.cmm.util.EgovUserDetailsHelper;
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
+import java.util.List;
 
 /**
  * 
@@ -27,41 +23,27 @@ import org.springframework.web.context.request.RequestContextHolder;
  *  </pre>
  */
 
-public class EgovUserDetailsSessionServiceImpl extends EgovAbstractServiceImpl implements
-		EgovUserDetailsService {
+public class EgovUserDetailsSessionServiceImpl extends EgovAbstractServiceImpl implements EgovUserDetailsService {
 
+	/**
+	 * 인증된 사용자객체를 VO형식으로 가져온다.
+	 * @return Object - 사용자 ValueObject
+	 */
 	public Object getAuthenticatedUser() {
-
-	
-
-		return RequestContextHolder.getRequestAttributes().getAttribute("loginVO", RequestAttributes.SCOPE_SESSION);
-
+		if (EgovUserDetailsHelper.isAuthenticated()) {
+			return EgovUserDetailsHelper.getAuthenticatedUser();	
+		}
+		return null;
 	}
 
 	public List<String> getAuthorities() {
-
 		// 권한 설정을 리턴한다.
-		List<String> listAuth = new ArrayList<String>();
-
-		return listAuth;
+		return EgovUserDetailsHelper.getAuthorities();
 	}
 
 	public Boolean isAuthenticated() {
 		// 인증된 유저인지 확인한다.
-
-		if (RequestContextHolder.getRequestAttributes() == null) {
-			return false;
-		} else {
-
-			if (RequestContextHolder.getRequestAttributes().getAttribute(
-					"loginVO", RequestAttributes.SCOPE_SESSION) == null) {
-				return false;
-			} else {
-				return true;
-			}
-		}
-
-
+		return EgovUserDetailsHelper.isAuthenticated();
 	}
 
 }

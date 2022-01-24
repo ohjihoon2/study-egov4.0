@@ -1,15 +1,10 @@
 package egovframework.com.cmm.web;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletResponse;
-
+import egovframework.com.cmm.EgovWebUtil;
+import egovframework.com.cmm.SessionVO;
+import egovframework.com.cmm.service.EgovFileMngService;
+import egovframework.com.cmm.service.FileVO;
+import egovframework.com.cmm.util.EgovResourceCloseHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -17,9 +12,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import egovframework.com.cmm.SessionVO;
-import egovframework.com.cmm.service.EgovFileMngService;
-import egovframework.com.cmm.service.FileVO;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Map;
 
 
 /**
@@ -27,10 +27,12 @@ import egovframework.com.cmm.service.FileVO;
  * @Description :
  * @Modification Information
  *
- *    수정일       수정자         수정내용
- *    -------        -------     -------------------
- *    2009. 4. 2.     이삼섭
- *    2011.08.31.     JJY        경량환경 템플릿 커스터마이징버전 생성
+ *    수정일       	      수정자                수정내용
+ *    ----------   ---------     -------------------
+ *    2009.04.02      이삼섭			 최초생성
+ *    2014.03.31      유지보수		 fileSn 오류수정
+ *    2018.08.31      이정은		     MimeType 중복설정 제거
+ *    2019.11.29      신용호	         KISA 보안약점 조치 : HTTP응답분할(HTTP_Response_Splitting,CRLF)취약점 조치
  *
  * @author 공통 서비스 개발팀 이삼섭
  * @since 2009. 4. 2.
@@ -38,15 +40,11 @@ import egovframework.com.cmm.service.FileVO;
  * @see
  *
  */
+@SuppressWarnings("serial")
 @Controller
 public class EgovImageProcessController extends HttpServlet {
 
-    /**
-	 *  serialVersion UID
-	 */
-	private static final long serialVersionUID = -6339945210971171173L;
-
-	@Resource(name = "EgovFileMngService")
+    @Resource(name = "EgovFileMngService")
     private EgovFileMngService fileService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EgovImageProcessController.class);
@@ -61,8 +59,7 @@ public class EgovImageProcessController extends HttpServlet {
      * @param response
      * @throws Exception
      */
-    @SuppressWarnings("resource")
-	@RequestMapping("/cmm/fms/getImage.do")
+    @RequestMapping("/cmm/fms/getImage.do")
     public void getImageInf(SessionVO sessionVO, ModelMap model, @RequestParam Map<String, Object> commandMap, HttpServletResponse response) throws Exception {
 
 		//@RequestParam("atchFileId") String atchFileId,
@@ -75,23 +72,36 @@ public class EgovImageProcessController extends HttpServlet {
 		vo.setAtchFileId(atchFileId);
 		vo.setFileSn(fileSn);
 
+		//------------------------------------------------------------
+		// fileSn이 없는 경우 마지막 파일 참조
+		//------------------------------------------------------------
+		if (fileSn == null || fileSn.equals("")) {
+			int newMaxFileSN = fileService.getMaxFileSN(vo);
+			vo.setFileSn(Integer.toString(newMaxFileSN - 1));
+		}
+		//------------------------------------------------------------
+
 		FileVO fvo = fileService.selectFileInf(vo);
 
 		//String fileLoaction = fvo.getFileStreCours() + fvo.getStreFileNm();
 
-		File file = new File(fvo.getFileStreCours(), fvo.getStreFileNm());
+		File file = null;
 		FileInputStream fis = null;
 
 		BufferedInputStream in = null;
 		ByteArrayOutputStream bStream = null;
-		try{
-			fis = new FileInputStream(file);
-			in = new BufferedInputStream(fis);
-			bStream = new ByteArrayOutputStream();
-			int imgByte;
-			while ((imgByte = in.read()) != -1) {
-			    bStream.write(imgByte);
-			}
+
+		try {
+		    file = new File(fvo.getFileStreCours(), fvo.getStreFileNm());
+		    fis = new FileInputStream(file);
+
+		    in = new BufferedInputStream(fis);
+		    bStream = new ByteArrayOutputStream();
+
+		    int imgByte;
+		    while ((imgByte = in.read()) != -1) {
+		    	bStream.write(imgByte);
+		    }
 
 			String type = "";
 
@@ -99,15 +109,15 @@ public class EgovImageProcessController extends HttpServlet {
 			    if ("jpg".equals(fvo.getFileExtsn().toLowerCase())) {
 				type = "image/jpeg";
 			    } else {
-				type = "image/" + fvo.getFileExtsn().toLowerCase();
+			    	type = "image/" + fvo.getFileExtsn().toLowerCase();
 			    }
-			    type = "image/" + fvo.getFileExtsn().toLowerCase();
+			    /*type = "image/" + fvo.getFileExtsn().toLowerCase();*/
 
 			} else {
 				LOGGER.debug("Image fileType is null.");
 			}
 
-			response.setHeader("Content-Type", type);
+			response.setHeader("Content-Type", EgovWebUtil.removeCRLF(type));
 			response.setContentLength(bStream.size());
 
 			bStream.writeTo(response.getOutputStream());
@@ -115,31 +125,8 @@ public class EgovImageProcessController extends HttpServlet {
 			response.getOutputStream().flush();
 			response.getOutputStream().close();
 
-
-		}catch(Exception e){
-			LOGGER.debug("{}", e);
-		}finally{
-			if (bStream != null) {
-				try {
-					bStream.close();
-				} catch (Exception est) {
-					LOGGER.debug("IGNORED: {}", est.getMessage());
-				}
-			}
-			if (in != null) {
-				try {
-					in.close();
-				} catch (Exception ei) {
-					LOGGER.debug("IGNORED: {}", ei.getMessage());
-				}
-			}
-			if (fis != null) {
-				try {
-					fis.close();
-				} catch (Exception efis) {
-					LOGGER.debug("IGNORED: {}", efis.getMessage());
-				}
-			}
+		} finally {
+			EgovResourceCloseHelper.close(bStream, in, fis);
 		}
     }
 }

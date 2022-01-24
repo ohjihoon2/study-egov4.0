@@ -1,14 +1,13 @@
 package egovframework.com.cmm;
 
-import java.io.IOException;
-import java.io.Reader;
+import org.apache.taglibs.standard.tag.common.core.Util;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.BodyTagSupport;
-
-import org.apache.taglibs.standard.tag.common.core.Util;
+import java.io.IOException;
+import java.io.Reader;
 
 /**
  * Cross-Site Scripting 체크하여 값을 되돌려 받는 핸들러 JSP TLD, 자바에서 사용가능
@@ -25,6 +24,7 @@ import org.apache.taglibs.standard.tag.common.core.Util;
  *
  * </pre>
  */
+@SuppressWarnings("serial")
 public class EgovComCrossSiteHndlr extends BodyTagSupport {
 
 	/*
@@ -35,7 +35,6 @@ public class EgovComCrossSiteHndlr extends BodyTagSupport {
 	// *********************************************************************
 	// Internal state
 
-	private static final long serialVersionUID = -6750233818675360686L;
 	protected Object value; // tag attribute
 	protected String def; // tag attribute
 	protected boolean escapeXml; // tag attribute
@@ -44,9 +43,9 @@ public class EgovComCrossSiteHndlr extends BodyTagSupport {
 	// *********************************************************************
 	// Construction and initialization
 
-	private String m_sDiffChar ="()[]{}\"',:;= \t\r\n%!+-";
+	private final String m_sDiffChar ="()[]{}\"',:;= \t\r\n%!+-";
 	//private String m_sDiffChar ="()[]{}\"',:;=%!+-";
-	private String m_sArrDiffChar [] = {
+	private final String m_sArrDiffChar [] = {
 						"&#40;","&#41;",
 						"&#91;","&#93;",
 						"&#123;","&#125;",
@@ -77,7 +76,6 @@ public class EgovComCrossSiteHndlr extends BodyTagSupport {
 	}
 
 	// Releases any resources we may have (or inherit)
-	@Override
 	public void release() {
 		super.release();
 		init();
@@ -87,7 +85,6 @@ public class EgovComCrossSiteHndlr extends BodyTagSupport {
 	// Tag logic
 
 	// evaluates 'value' and determines if the body should be evaluted
-	@Override
 	public int doStartTag() throws JspException {
 
 		needBody = false; // reset state related to 'default'
@@ -127,7 +124,6 @@ public class EgovComCrossSiteHndlr extends BodyTagSupport {
 	}
 
 	// prints the body if necessary; reports errors
-	@Override
 	public int doEndTag() throws JspException {
 		try {
 			//System.out.println("EgovComCrossSiteFilter ==== doEndTag");
@@ -378,7 +374,8 @@ public class EgovComCrossSiteHndlr extends BodyTagSupport {
     public void setEscapeXml(boolean escapeXml) {
         this.escapeXml = escapeXml;
     }
-    /*
+
+    /** 2011.10.10 cmd 라인상에서 편의제공을 위해 제공, 필요없을시 삭제하여도 무방함
     public static void main(String[] args) throws IOException
     {
 
@@ -388,7 +385,7 @@ public class EgovComCrossSiteHndlr extends BodyTagSupport {
 
     	String sCrossSiteHndlr = egovComCrossSiteHndlr.getWriteEscapedXml();
     	//System.out.println("writeEscapedXml " + egovComCrossSiteHndlr.getWriteEscapedXml());
-
+    	/*
     	System.out.println("sCrossSiteHndlr|"+ sCrossSiteHndlr + "|");
 
     	try{
@@ -400,9 +397,8 @@ public class EgovComCrossSiteHndlr extends BodyTagSupport {
     		System.out.println("TRY TEST 3");
 
     	}
-
     }
-    */
+     */
  }
 
 

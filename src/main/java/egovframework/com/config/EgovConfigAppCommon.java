@@ -3,6 +3,7 @@ package egovframework.com.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import egovframework.com.cmm.EgovComTraceHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import egovframework.com.cmm.EgovComTraceHandler;
 import egovframework.com.cmm.EgovMessageSource;
 import egovframework.com.cmm.ImagePaginationRenderer;
 import egovframework.com.cmm.web.EgovMultipartResolver;

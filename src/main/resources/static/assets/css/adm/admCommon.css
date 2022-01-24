@@ -626,7 +626,7 @@ html, body {
     background-color: #414647;
     font-weight: 600;
     font-size: 20px;
-    letter-spacing: 1px;
+    comter-spacing: 1px;
 }
 
 .content-card > div.green div:nth-child(1)  {

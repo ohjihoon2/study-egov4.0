@@ -19,7 +19,7 @@ body {min-width: 1400px;}
 .header .gnb ul::after {content: ""; display: block; clear: both;}
 .header .gnb ul li {float: left;}
 .header .gnb ul li + li {margin-left: 98px;}
-.header .gnb ul li a {color: #666; font-size: 20px; font-weight: 700; letter-spacing: -0.25px;}
+.header .gnb ul li a {color: #666; font-size: 20px; font-weight: 700; comter-spacing: -0.25px;}
 .header .gnb ul li a.cur {color: #222;}
 
 .header .right_a {position: absolute; right: 50px; top: 75px;}
