@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserDetailsService , UserService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         // TODO Auto-generated method stub
 
-        UserVO user = userDAO.getUserById(userName);
+        UserVO user = userDAO.loadUserByUsername(userName);
 
         if(user == null) {
             throw new UsernameNotFoundException(userName);

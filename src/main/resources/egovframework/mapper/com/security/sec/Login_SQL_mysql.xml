@@ -20,14 +20,18 @@
         <result property="userEnabled" column="USER_ENABLED" />
     </resultMap>
 
-    <select id="getUserById" parameterType="String" resultMap="resultUserVO">
-        SELECT
-            USER_ID
-             , USER_PASSWORD
-             , USER_NAME
-             , USER_AUTHORITY
-             , USER_ENABLED
-        FROM TB_USER
-        WHERE USER_ID = #{userId}
+    <select id="loadUserByUsername" parameterType="String" resultMap="resultUserVO">
+        SELECT USER_ID,
+               ESNTL_ID AS PASSWORD,
+               1 ENABLED,
+               USER_NM,
+               USER_ZIP,
+               USER_ADRES,
+               USER_EMAIL,
+               USER_SE,
+               ORGNZT_ID,
+               ESNTL_ID,
+               (select a.ORGNZT_NM from COMTNORGNZTINFO a where a.ORGNZT_ID = m.ORGNZT_ID) ORGNZT_NM
+          FROM COMVNUSERMASTER m WHERE CONCAT(USER_SE, USER_ID) = #{userId}
     </select>
 </mapper>

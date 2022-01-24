@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository("memberDAO")
 public class UserDAO extends EgovComAbstractDAO {
 
-    public UserVO getUserById(String userId) {
-        return (UserVO)selectOne("LoginUsrSecurity.getUserById", userId);
+    public UserVO loadUserByUsername(String userId) {
+        return (UserVO)selectOne("LoginUsrSecurity.loadUserByUsername", userId);
     }
 
 }

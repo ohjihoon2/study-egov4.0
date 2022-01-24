@@ -51,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll(); // url에 따른 모두 허용
 
         http.formLogin() // form 기반 로그인 인증 관련하며 HttpSession 이용
-//                .loginPage("/login") // 지정하고 싶은 로그인 페이지 url
+                .loginPage("/login") // 지정하고 싶은 로그인 페이지 url
                 .usernameParameter("id") // 지정하고 싶은 username name 명칭이며, 기본은 username
                 .passwordParameter("password") // 지정하고 싶은 password name 명칭이며, 기본은 password
                 .defaultSuccessUrl("/index") // 로그인 성공 시 이동페이지
