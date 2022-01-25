@@ -9,6 +9,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
@@ -17,6 +18,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        System.out.println("CustomAuthenticationProvider.authenticate");
         // TODO Auto-generated method stub
 
         System.out.println("authentication : " + authentication);
@@ -26,9 +28,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         System.out.println("loginUserName : " + loginUserName);
         System.out.println("loginPassword : " + loginPassword);
 
-        UserVO userVO = (UserVO) userService.loadUserByUsername(loginUserName);
-        System.out.println("userVO = " + userVO);
-        if(!matchPassword(loginPassword, userVO.getPassword())) {
+        UserDetails userDetails = userService.loadUserByUsername(loginUserName);
+        System.out.println("userDetails.toString() = " + userDetails.toString());
+        if(!matchPassword(loginPassword, userDetails.getPassword())) {
 
             throw new BadCredentialsException(loginUserName);
         }
@@ -39,7 +41,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         }
         */
 
-//        return new UsernamePasswordAuthenticationToken(loginUserName, loginPassword, loginVO.getAuthorities());
+//        return new UsernamePasswordAuthenticationToken(loginUserName, loginPassword, userDetails.getAuthorities());
         return new UsernamePasswordAuthenticationToken(loginUserName, loginPassword);
     }
 

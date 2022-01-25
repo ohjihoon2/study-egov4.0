@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -44,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
 
-//                .csrf().disable() // csrf를 사용할지 여부
+        http.csrf().disable(); // csrf를 사용할지 여부
         http.authorizeRequests() // HttpServletRequest에 따라접근을 제한
 //                .antMatchers("/admin/**").hasRole("ADMIN") // url에 따른 권한만 허용
 //                .antMatchers("/info").hasRole("MEMBER") // url에 따른 권한만 허용
@@ -56,8 +57,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password") // 지정하고 싶은 password name 명칭이며, 기본은 password
                 .defaultSuccessUrl("/index") // 로그인 성공 시 이동페이지
                 .permitAll() // 모두 접근 허용
-                .and();
-//                .addFilterBefore(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+                .and()
+                .addFilterBefore(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 //                .csrf() // csrf 사용
 //                .ignoringAntMatchers("/h2-console/**") // csrf 제외 url
 //                .ignoringAntMatchers("/post/**") // csrf 제외 url
@@ -78,7 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public CustomAuthenticationFilter customAuthenticationFilter() throws Exception {
         System.out.println("WebSecurityConfig.customAuthenticationFilter");
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManager());
-        customAuthenticationFilter.setFilterProcessesUrl("/login");
+        customAuthenticationFilter.setFilterProcessesUrl("/loginproc");
         customAuthenticationFilter.setAuthenticationSuccessHandler(customLoginSuccessHandler());
         customAuthenticationFilter.afterPropertiesSet();
         return customAuthenticationFilter;
@@ -100,6 +101,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        System.out.println("WebSecurityConfig.configure");
         auth.authenticationProvider(authProvider);
     }
 

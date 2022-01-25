@@ -1,6 +1,7 @@
 package egovframework.com.login.service.impl;
 
 import egovframework.com.cmm.LoginVO;
+import egovframework.com.cmm.util.EgovUserDetailsHelper;
 import egovframework.com.login.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,13 +33,20 @@ public class UserServiceImpl implements UserDetailsService , UserService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         // TODO Auto-generated method stub
-
         UserVO user = userDAO.loadUserByUsername(userName);
+        System.out.println("user = " + user);
+
+        String auth = userDAO.loadAuthoritiesByUsername(userName);
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(auth));
 
         if(user == null) {
             throw new UsernameNotFoundException(userName);
+        }else{
+            user.setUserAuthority(authorities.toString());
         }
 
         return user;
+//        return user;
     }
 }

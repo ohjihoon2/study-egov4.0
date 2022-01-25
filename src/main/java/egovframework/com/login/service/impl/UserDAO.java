@@ -11,4 +11,7 @@ public class UserDAO extends EgovComAbstractDAO {
         return (UserVO)selectOne("LoginUsrSecurity.loadUserByUsername", userId);
     }
 
+    public String loadAuthoritiesByUsername(String userId){
+        return selectOne("LoginUsrSecurity.loadAuthoritiesByUsername", userId);
+    }
 }
