@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserDetailsService , UserService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        System.out.println("UserServiceImpl.loadUserByUsername");
         // TODO Auto-generated method stub
         UserVO user = userDAO.loadUserByUsername(userName);
         System.out.println("user = " + user);
@@ -42,11 +43,21 @@ public class UserServiceImpl implements UserDetailsService , UserService {
 
         if(user == null) {
             throw new UsernameNotFoundException(userName);
-        }else{
-            user.setUserAuthority(authorities.toString());
         }
 
-        return user;
+//        user.setUserAuthority(authorities.toString());
+
+        return new User(userName, user.getPassword(),authorities);
 //        return user;
+    }
+
+    @Override
+    public List<GrantedAuthority> loadAuthoritiesByUsername(String userId) {
+        String auth = userDAO.loadAuthoritiesByUsername(userId);
+
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(auth));
+
+        return authorities;
     }
 }

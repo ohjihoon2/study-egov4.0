@@ -1,5 +1,6 @@
 package egovframework.com.login.service.impl;
 
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.SpringSecurityCoreVersion;
@@ -8,30 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
+@ToString
 public class UserVO implements UserDetails {
-    @Override
-    public String toString() {
-        return "UserVO{" +
-                "userDAO=" + userDAO +
-                ", userId='" + userId + '\'' +
-                ", password='" + password + '\'' +
-                ", userNm='" + userNm + '\'' +
-                ", userZip='" + userZip + '\'' +
-                ", userAdres='" + userAdres + '\'' +
-                ", userEmail='" + userEmail + '\'' +
-                ", userSe='" + userSe + '\'' +
-                ", orgnztId='" + orgnztId + '\'' +
-                ", esntlId='" + esntlId + '\'' +
-                ", userAuthority='" + userAuthority + '\'' +
-                ", authorities=" + authorities +
-                ", userEnabled=" + userEnabled +
-                '}';
-    }
 
     @Autowired
-    UserDAO userDAO;
-
     private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 
     private String userId;
@@ -53,10 +34,6 @@ public class UserVO implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // TODO Auto-generated method stub
         return authorities;
-//        ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
-//        userDAO.loadAuthoritiesByUsername(userId);
-//        auth.add(new SimpleGrantedAuthority(userDAO.loadAuthoritiesByUsername(userId)));
-//        return authorities;
     }
 
     @Override
@@ -93,14 +70,6 @@ public class UserVO implements UserDetails {
     public boolean isEnabled() {
         // TODO Auto-generated method stub
         return userEnabled;
-    }
-
-    public UserDAO getUserDAO() {
-        return userDAO;
-    }
-
-    public void setUserDAO(UserDAO userDAO) {
-        this.userDAO = userDAO;
     }
 
     public String getUserId() {

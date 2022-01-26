@@ -1,15 +1,17 @@
 package egovframework.com.security.filter;
 
-import egovframework.com.cmm.LoginVO;
 import egovframework.com.login.service.UserService;
-import egovframework.com.login.service.impl.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import java.util.List;
 
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
@@ -21,28 +23,35 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         System.out.println("CustomAuthenticationProvider.authenticate");
         // TODO Auto-generated method stub
 
-        System.out.println("authentication : " + authentication);
+//        String loginUserName = String.valueOf(authentication.getPrincipal());
+//        String loginPassword = String.valueOf(authentication.getCredentials());
 
-        String loginUserName = String.valueOf(authentication.getPrincipal());
-        String loginPassword = String.valueOf(authentication.getCredentials());
-        System.out.println("loginUserName : " + loginUserName);
-        System.out.println("loginPassword : " + loginPassword);
+//        System.out.println("loginUserName : " + loginUserName);
+//        System.out.println("loginPassword : " + loginPassword);
 
-        UserDetails userDetails = userService.loadUserByUsername(loginUserName);
-        System.out.println("userDetails.toString() = " + userDetails.toString());
-        if(!matchPassword(loginPassword, userDetails.getPassword())) {
 
-            throw new BadCredentialsException(loginUserName);
+//        UserDetails userDetails = userService.loadUserByUsername(loginUserName);
+//        System.out.println("userDetails.toString() = " + userDetails.toString());
+//        if(!matchPassword(loginPassword, userDetails.getPassword())) {
+//            throw new BadCredentialsException(loginUserName);
+//        }
+
+        UsernamePasswordAuthenticationToken authToken = (UsernamePasswordAuthenticationToken) authentication;
+
+
+        UserDetails userDetails = userService.loadUserByUsername(authToken.getName());
+        if(userDetails == null){
+            throw new UsernameNotFoundException(authToken.getName());
         }
 
-        /*
-        if(!loginVO.isEnabled()) {
-            throw new BadCredentialsException(loginUserName);
-        }
-        */
+        if(!matchPassword(userDetails.getPassword(), (String) authToken.getCredentials())) {
 
-//        return new UsernamePasswordAuthenticationToken(loginUserName, loginPassword, userDetails.getAuthorities());
-        return new UsernamePasswordAuthenticationToken(loginUserName, loginPassword);
+            throw new BadCredentialsException("not matching username or password");
+        }
+
+        List<GrantedAuthority> authorities = userService.loadAuthoritiesByUsername(authToken.getName());
+
+        return new UsernamePasswordAuthenticationToken(authToken.getPrincipal(), authToken.getCredentials(),authorities);
     }
 
     @Override
@@ -56,6 +65,5 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         return loginPassword.equals(password);
 
     }
-
 
 }
