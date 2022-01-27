@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserDetailsService , UserService {
         System.out.println("user = " + user);
 
         String auth = userDAO.loadAuthoritiesByUsername(userName);
+        System.out.println("auth = " + auth);
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(auth));
 

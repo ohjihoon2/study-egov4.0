@@ -22,7 +22,7 @@
 
     <select id="loadUserByUsername" parameterType="String" resultType="egovframework.com.login.service.impl.UserVO">
         SELECT USER_ID,
-               ESNTL_ID AS PASSWORD,
+               PASSWORD,
                1 ENABLED,
                USER_NM,
                USER_ZIP,

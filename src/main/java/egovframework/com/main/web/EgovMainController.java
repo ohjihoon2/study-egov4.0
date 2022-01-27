@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.Map;
 
 /**
@@ -106,10 +107,12 @@ public class EgovMainController {
 	 */
 
 	@RequestMapping(value = {"/", "/index"})
-	public String index(Model model, HttpSession session) throws Exception {
+	public String index(Model model, HttpSession session, Principal principal) throws Exception {
 		System.out.println("EgovMainController.index");
 		LoginVO loginVO = (LoginVO)session.getAttribute("LoginVO");
+
 		model.addAttribute("loginVO", loginVO);
+		model.addAttribute("principal", principal);
 		return "index";
 
 	}

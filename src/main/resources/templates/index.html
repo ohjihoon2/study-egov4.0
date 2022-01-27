@@ -13,18 +13,18 @@
 
 <body>
 <header>
-    <th:block th:if="${loginVO == null}">
+    <th:block th:if="${principal == null}">
         <div>환영합니다 로그인하세요.</div>
         <div style="float: right;">
             <a href="/login">로그인</a>
         </div>
     </th:block>
-    <th:block th:if="${loginVO != null}">
-        <div>[[${loginVO.name}]] 님 환영합니다.</div>
+    <th:block th:if="${principal != null}">
+        <div>[[${principal}]] 님 환영합니다.</div>
         <div style="float: right;">
-                <th:block th:if="${loginVO.userSe == 'USR'}">
-                    <a href="/adm">관리자</a>
-                </th:block>
+<!--                <th:block th:if="${loginVO.userSe == 'USR'}">-->
+<!--                    <a href="/adm">관리자</a>-->
+<!--                </th:block>-->
             <a href="/uat/uia/actionLogout.do">로그아웃</a>
         </div>
     </th:block>
