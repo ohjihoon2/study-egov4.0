@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
 
-        http.csrf().disable(); // csrf를 사용할지 여부
+//        http.csrf().disable(); // csrf를 사용할지 여부
         http.authorizeRequests() // HttpServletRequest에 따라접근을 제한
 //                .antMatchers("/admin/**").hasRole("ADMIN") // url에 따른 권한만 허용
 //                .antMatchers("/info").hasRole("MEMBER") // url에 따른 권한만 허용

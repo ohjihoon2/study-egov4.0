@@ -51,7 +51,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         List<GrantedAuthority> authorities = userService.loadAuthoritiesByUsername(authToken.getName());
 
-        return new UsernamePasswordAuthenticationToken(authToken.getPrincipal(), authToken.getCredentials(),authorities);
+        Authentication auth = new UsernamePasswordAuthenticationToken(authToken.getPrincipal(), authToken.getCredentials(),authorities);
+        System.out.println("auth = " + auth);
+        return auth;
     }
 
     @Override

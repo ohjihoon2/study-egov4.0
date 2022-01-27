@@ -53,6 +53,7 @@ public class UserServiceImpl implements UserDetailsService , UserService {
 
     @Override
     public List<GrantedAuthority> loadAuthoritiesByUsername(String userId) {
+        System.out.println("UserServiceImpl.loadAuthoritiesByUsername");
         String auth = userDAO.loadAuthoritiesByUsername(userId);
 
         List<GrantedAuthority> authorities = new ArrayList<>();
