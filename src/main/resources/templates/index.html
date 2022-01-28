@@ -13,14 +13,16 @@
 
 <body>
 <header>
-    <th:block th:if="${principal == null}">
+    <th:block th:if="${session.principal == null}">
         <div>환영합니다 로그인하세요.</div>
         <div style="float: right;">
             <a href="/login">로그인</a>
         </div>
     </th:block>
-    <th:block th:if="${principal != null}">
-        <div>[[${principal}]] 님 환영합니다.</div>
+    <th:block th:if="${session.principal != null}">
+        <div>[[${session.auth.principal}]]</div>
+<!--        <div>[[${principal}]]</div>-->
+        <div>[[${session.principal}]] 님 환영합니다.</div>
         <div style="float: right;">
 <!--                <th:block th:if="${loginVO.userSe == 'USR'}">-->
 <!--                    <a href="/adm">관리자</a>-->

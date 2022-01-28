@@ -3,12 +3,14 @@ package egovframework.com.main.web;
 import egovframework.com.cmm.ComDefaultVO;
 import egovframework.com.cmm.LoginVO;
 import egovframework.com.cop.bbs.service.BoardVO;
+import egovframework.com.login.service.impl.UserVO;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -17,6 +19,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.Enumeration;
 import java.util.Map;
 
 /**
@@ -109,10 +112,18 @@ public class EgovMainController {
 	@RequestMapping(value = {"/", "/index"})
 	public String index(Model model, HttpSession session, Principal principal) throws Exception {
 		System.out.println("EgovMainController.index");
-		LoginVO loginVO = (LoginVO)session.getAttribute("LoginVO");
+		Enumeration<String> attrNames = session.getAttributeNames();
 
-		model.addAttribute("loginVO", loginVO);
-		model.addAttribute("principal", principal);
+		while(attrNames.hasMoreElements()){
+			String sessionName = attrNames.nextElement();
+			Object sessionValue = session.getAttribute(sessionName);
+			System.out.println(sessionName + " : " + sessionValue);
+		}
+
+		UserVO userVO = (UserVO) session.getAttribute("UserVO");
+		System.out.println("userVO = " + userVO);
+
+		model.addAttribute("loginVO", userVO);
 		return "index";
 
 	}
